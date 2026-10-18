@@ -93,3 +93,78 @@ Before we begin coding, let's complete the initial setup for this lesson:
 - The application tests if a new transaction can be added.
 - The application tests if search functionality updates the page correctly.
 
+## Completed Application
+
+This banking application lets users view, add, search, and sort transactions. Each transaction includes a date, description, category, and amount. Transactions are loaded from and saved to a local JSON Server backend.
+
+### Features
+
+- Display saved transactions when the application starts.
+- Add transactions through a form and save them with a POST request.
+- Search transaction descriptions regardless of capitalization.
+- Restore the full transaction list when the search is cleared.
+- Sort transactions alphabetically by description or category.
+
+### Technologies
+
+- React
+- Vite
+- JSON Server
+- Vitest
+- React Testing Library
+- Testing Library User Event
+
+### Running the Application
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the backend:
+
+```bash
+npm run server
+```
+
+In a separate terminal, start the frontend:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed by Vite.
+
+### Running Tests
+
+Run all tests once:
+
+```bash
+npm test -- --run
+```
+
+Run tests in watch mode:
+
+```bash
+npm test
+```
+
+The test suites verify:
+
+- Transaction details display on startup.
+- Typing in Search calls the search handler.
+- Searching filters the displayed transactions without case sensitivity.
+- Changing the sort selection calls the sort handler.
+- Transactions sort correctly by category and description.
+- Submitting a transaction sends the correct POST request and displays the saved transaction.
+
+Fetch requests are mocked during testing, so the tests do not require the backend to be running.
+
+### Screenshot
+
+![Banking application displaying transactions](screenshots/transactions-app.png)
+
+### Development Approach
+
+Search and sorting tests were written before implementing the missing functionality. The failing tests identified the missing behavior, and the application code was updated until the tests passed. Testing also identified a form-field access issue, which was corrected by accessing inputs through the form's elements collection.
